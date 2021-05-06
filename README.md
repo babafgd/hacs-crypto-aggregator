@@ -1,7 +1,5 @@
 # hacs-crypto-aggregator
 
-[![hacs_badge](https://img.shields.io/badge/HACS-Default-orange.svg)](https://github.com/custom-components/hacs)
-
 An attempt to aggregate Crypto wallet balance and unpaid pool balance from various source : 
 - Support Ethermine pool wallet [Ethermine](https://ethermine.org/)
 - An integration with [Minerstart](https://minerstat.com/) to create a sensor from your rig's hashrate.
