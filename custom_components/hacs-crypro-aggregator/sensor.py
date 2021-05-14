@@ -8,17 +8,23 @@ import homeassistant.helpers.config_validation as cv
 __version__ = "1.1.0"
 
 CONF_NAME = "name"
-CONF_ACCESS_KEY = "access_key"
-CONF_RIG_NAME = "rig_name"
-DEFAULT_NAME = "Minerstat"
+CONF_APIKEY = "EK-vgDMJ-AehSCSu-Y59U5"
+CONF_WALLET = "0x6450a23bcbca15b6baa385825ff9f091fda105bf"
+CONF_CRYPTO = "ETH"
+CONF_FIAT = "EUR"
+DEFAULT_NAME = "ETH_balance"
+DEFAULT_CRYPTO = "ETH"
+DEFAULT_FIAT = "EUR"
 DEFAULT_SCAN_INTERVAL = timedelta(minutes=15)
 SCAN_INTERVAL = timedelta(minutes=15)
 
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
     {
         vol.Optional(CONF_NAME, default=DEFAULT_NAME): cv.string,
-        vol.Required(CONF_ACCESS_KEY): str,
-        vol.Required(CONF_RIG_NAME): str,
+        vol.Required(CONF_WALLET): str,
+        vol.Required(CONF_APIKEY): str,
+        vol.Optional(CONF_CRYPTO, default=DEFAULT_CRYPTO): cv.string,
+        vol.Optional(CONF_FIAT, default=DEFAULT_FIAT): cv.string,
     }
 )
 
@@ -50,24 +56,15 @@ class Minerstat(entity.Entity):
 
     def update(self):
         req = urllib.request.Request(
-            f"https://api.minerstat.com/v2/stats/{self._config[CONF_ACCESS_KEY]}/{self._config[CONF_RIG_NAME]}",
+            f"https://api.ethplorer.io/getAddressInfo/{self._config[CONF_WALLET]}?apiKey={self._config[CONF_APIKEY]}",
             headers={"User-Agent": "Home-assistant.io"},
         )
 
         with urllib.request.urlopen(req) as url:
             data = json.loads(url.read().decode())
 
-            self._status = data[self._config[CONF_RIG_NAME]]["info"]["status"]
-
-            if self._status == "offline":
-                self._state = 0
-            else:
-                self._state = data[self._config[CONF_RIG_NAME]]["mining"]["hashrate"][
-                    "hashrate"
-                ]
-                self._unit = data[self._config[CONF_RIG_NAME]]["mining"]["hashrate"][
-                    "hashrate_unit"
-                ]
+            self._status = data[self._config[CONF_CRYPTO]]["balance"]
+            self._unit = self._config[CONF_CRYPTO]
 
     @property
     def device_state_attributes(self):

@@ -1,25 +1,30 @@
 # hacs-crypto-aggregator
 
 An attempt to aggregate Crypto wallet balance and unpaid pool balance from various source :
-- Support Ethermine pool wallet [Ethermine](https://ethermine.org/)
-- An integration with [Minerstart](https://minerstat.com/) to create a sensor from your rig's hashrate.
+- get Wallet balance from Etherscan
+Support Ethermine pool wallet [Ethermine](https://ethermine.org/)
 
 ## Usage
 `configuration.yaml`:
 ```yaml
 sensor:
-  - platform: hacs-Crypto-aggregator
-    name: "My Awesome Rig"
-    access_key: "00000000"
-    rig_name: "RIG1"
+  - platform: hacs-crypto-aggregator
+    name: "My ETH balance"
+    api_key: "EK-vgDMJ-AehSCSu-Y59U5"
+    wallet: "0x6450a23bcbca15b6baa385825ff9f091fda105bf"
+    crypto : "ETH"
+    fiat : "EUR"
+
 ```
 
 ## Options
 |Name|Type|Necessity|Default|Description|
 |----|:--:|:-------:|:-----:|-----------|
-|`platform`|string|**Required**|`hacs-Crypto-aggregator`|The platform name|
-|`access_key`|string|**Required**||Your personal access key from https://my.minerstat.com/|
-|`rig_name`|string|**Required**||The name that you defined for your rig at Minerstat|
+|`platform`|string|**Required**|`hacs-crypto-aggregator`|The platform name|
+|`api_key`|string|**Required**||Your personal API key from https://my.etherscqn.io/|
+|`wallet`|string|**Required**||The wallet address which you want to know the balance|
+|`crypto`|string|Optional|`ETH`|Which Crypto is your wallet|
+|`fiat`|string|Optional|`EUR`|In which fiat you want to convert the crypto wallet balance value|
 |`name`|string|Optional|`Minerstat`|Custom name for the sensor|
 
 ## Support this project
