@@ -10,7 +10,7 @@ Support Ethermine pool wallet [Ethermine](https://ethermine.org/)
 sensor:
   - platform: hacs-crypto-aggregator
     name: "My ETH balance"
-    api_key: "EK-vgDMJ-AehSCSu-Y59U5"
+    api_key: "YOUR-KEY"
     wallet: "0x6450a23bcbca15b6baa385825ff9f091fda105bf"
     crypto : "ETH"
     fiat : "EUR"
@@ -21,7 +21,7 @@ sensor:
 |Name|Type|Necessity|Default|Description|
 |----|:--:|:-------:|:-----:|-----------|
 |`platform`|string|**Required**|`hacs-crypto-aggregator`|The platform name|
-|`api_key`|string|**Required**||Your personal API key from https://my.etherscqn.io/|
+|`api_key`|string|**Required**||Your personal API key from https://my.etherscan.io/|
 |`wallet`|string|**Required**||The wallet address which you want to know the balance|
 |`crypto`|string|Optional|`ETH`|Which Crypto is your wallet|
 |`fiat`|string|Optional|`EUR`|In which fiat you want to convert the crypto wallet balance value|
