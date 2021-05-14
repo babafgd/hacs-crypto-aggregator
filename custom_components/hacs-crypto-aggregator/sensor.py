@@ -63,7 +63,7 @@ class Minerstat(entity.Entity):
         with urllib.request.urlopen(req) as url:
             data = json.loads(url.read().decode())
 
-            self._status = data[self._config[CONF_CRYPTO]]["balance"]
+            self._state = data[self._config[CONF_CRYPTO]]["balance"]
             self._unit = self._config[CONF_CRYPTO]
 
     @property
