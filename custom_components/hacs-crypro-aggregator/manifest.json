@@ -1,0 +1,9 @@
+{
+    "domain": "hacs-Crypto-aggregator",
+    "name": "Crypto-aggregator",
+    "documentation": "https://github.com/babafgd/hacs-crypto-aggregator",
+    "issue_tracker": "https://github.com/babafgd/hacs-crypto-aggregator/issues",
+    "codeowners": [
+        "@babafgd"
+    ]
+}

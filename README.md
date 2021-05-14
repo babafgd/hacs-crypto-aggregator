@@ -1,6 +1,6 @@
 # hacs-crypto-aggregator
 
-An attempt to aggregate Crypto wallet balance and unpaid pool balance from various source : 
+An attempt to aggregate Crypto wallet balance and unpaid pool balance from various source :
 - Support Ethermine pool wallet [Ethermine](https://ethermine.org/)
 - An integration with [Minerstart](https://minerstat.com/) to create a sensor from your rig's hashrate.
 
@@ -8,7 +8,7 @@ An attempt to aggregate Crypto wallet balance and unpaid pool balance from vario
 `configuration.yaml`:
 ```yaml
 sensor:
-  - platform: hacs-minerstat
+  - platform: hacs-Crypto-aggregator
     name: "My Awesome Rig"
     access_key: "00000000"
     rig_name: "RIG1"
@@ -17,7 +17,7 @@ sensor:
 ## Options
 |Name|Type|Necessity|Default|Description|
 |----|:--:|:-------:|:-----:|-----------|
-|`platform`|string|**Required**|`hacs-minerstat`|The platform name|
+|`platform`|string|**Required**|`hacs-Crypto-aggregator`|The platform name|
 |`access_key`|string|**Required**||Your personal access key from https://my.minerstat.com/|
 |`rig_name`|string|**Required**||The name that you defined for your rig at Minerstat|
 |`name`|string|Optional|`Minerstat`|Custom name for the sensor|
